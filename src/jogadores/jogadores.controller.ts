@@ -12,7 +12,6 @@ export class JogadoresController {
         private readonly jogadoresServices: JogadoresService
     ) {}
 
-    @HttpCode(201)
     @Post()
     async criarAtualizarJogador(@Body() criarJogadorDto: CriarJogadorDto) {
         return this.jogadoresServices.criarAtualizarJogador(criarJogadorDto);
