@@ -31,9 +31,9 @@ export class JogadoresService {
         return await this.jogadorModel.find().exec()
     }
 
-    async consultarJogadorPorId(_id: string): Promise<IJogador> {
+    async consultarJogadorPorId(id: string): Promise<IJogador> {
 
-        const jogadorEncontrado = await this.jogadorModel.findOne({ _id })
+        const jogadorEncontrado = await this.jogadorModel.findOne({ id })
 
         if (!jogadorEncontrado) {
             throw new NotFoundException('Jogador não encontrado')
@@ -42,19 +42,19 @@ export class JogadoresService {
         return jogadorEncontrado;    
     }
 
-    async atualizarJogador(_id: string, atualizarJogadotDto: AtualizarJogadotDto): Promise<void> {
+    async atualizarJogador(id: string, atualizarJogadotDto: AtualizarJogadotDto): Promise<void> {
 
-        const jogadorEncontrado = await this.jogadorModel.findById(_id)
+        const jogadorEncontrado = await this.jogadorModel.findById(id)
 
         if (!jogadorEncontrado) {
             throw new NotFoundException('Jogador não encontrado')
         }
 
         await this.jogadorModel.findOneAndUpdate(
-        { _id }, { $set: atualizarJogadotDto }).exec();
+        { id }, { $set: atualizarJogadotDto }).exec();
     }
 
-    async deletarJogador(_id: string): Promise<any> {
-        return await this.jogadorModel.deleteOne({ _id }).exec();        
+    async deletarJogador(id: string): Promise<any> {
+        return await this.jogadorModel.deleteOne({ id }).exec();        
     }
 }

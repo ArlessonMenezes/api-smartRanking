@@ -21,20 +21,20 @@ export class JogadoresController {
         return await this.jogadoresServices.consultarJogadores()
     }
 
-    @Get('/:_id')
-    async consultarJogadorePorId(@Param('_id', JogadoresValidacaoParametrosPipe) _id: string): Promise<IJogador> {
-            return await this.jogadoresServices.consultarJogadorPorId(_id)
+    @Get('/:id')
+    async consultarJogadorePorId(@Param('id', JogadoresValidacaoParametrosPipe) id: string): Promise<IJogador> {
+            return await this.jogadoresServices.consultarJogadorPorId(id)
     }
 
-    @Put('/:_id')
+    @Put('/:id')
     async atualizarJogador(
-        @Param('_id', JogadoresValidacaoParametrosPipe) _id: string, 
+        @Param('id', JogadoresValidacaoParametrosPipe) id: string, 
         @Body() atualizarJogadotDto: AtualizarJogadotDto): Promise<void> {        
-        return await this.jogadoresServices.atualizarJogador(_id, atualizarJogadotDto);
+        return await this.jogadoresServices.atualizarJogador(id, atualizarJogadotDto);
     }
 
-    @Delete('/:_id')
-    async deletarJogador(@Param('_id', JogadoresValidacaoParametrosPipe) _id: string): Promise<void> {
-        return this.jogadoresServices.deletarJogador(_id);
+    @Delete('/:id')
+    async deletarJogador(@Param('id', JogadoresValidacaoParametrosPipe) id: string): Promise<void> {
+        return this.jogadoresServices.deletarJogador(id);
     }
 }
